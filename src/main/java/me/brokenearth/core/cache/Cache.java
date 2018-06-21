@@ -19,7 +19,7 @@ import java.util.Map;
  * @param <K> The key
  * @param <V> The value
  */
-public class Cache<K, V> extends LinkedHashMap<K, V> {
+public final class Cache<K, V> extends LinkedHashMap<K, V> {
 
     /**
      * The serial version UID

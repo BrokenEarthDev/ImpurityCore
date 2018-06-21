@@ -28,6 +28,10 @@ public final class Command extends ListenerAdapter {
      * Stores the classes that implement CommandExecutor
      */
     private static HashMap<CommandExecutor, String> map = new HashMap<CommandExecutor, String>();
+
+    /**
+     * Gets the prefix of the command
+     */
     private static String prefix = "";
 
     /**

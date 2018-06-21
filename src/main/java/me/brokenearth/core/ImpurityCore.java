@@ -46,5 +46,6 @@ public class ImpurityCore extends ListenerAdapter {
      */
     public static JDA getJDA() {
         return jda;
+
     }
 }

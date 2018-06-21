@@ -45,6 +45,9 @@ public final class CommandEvent {
      * The prefix of the command
      */
     private String prefix;
+    /**
+     * The channel in which the command is executed
+     */
     private MessageChannel channel;
 
     public CommandEvent(Member member, Guild guild, String command, String prefix, JDA jda, MessageChannel channel) {
@@ -53,6 +56,7 @@ public final class CommandEvent {
         this.jda = jda;
         this.command = command;
         this.prefix = prefix;
+        this.channel = channel;
     }
 
     /**

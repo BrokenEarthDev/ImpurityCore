@@ -17,7 +17,7 @@ import java.util.TimerTask;
  * @version 1.0
  * @see Timer
  */
-public class Scheduler {
+public final class Scheduler {
 
     /**
      * Original timer instance
