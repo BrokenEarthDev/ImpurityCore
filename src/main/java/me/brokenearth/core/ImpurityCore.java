@@ -1,5 +1,6 @@
 package me.brokenearth.core;
 
+import me.brokenearth.core.cache.Cache;
 import me.brokenearth.core.commands.Command;
 import me.brokenearth.core.scheduler.Scheduler;
 import me.brokenearth.core.scheduler.Timer;

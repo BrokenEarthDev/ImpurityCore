@@ -1,4 +1,5 @@
 package me.brokenearth.core.scheduler;
+
 import java.util.TimerTask;
 
 /**
