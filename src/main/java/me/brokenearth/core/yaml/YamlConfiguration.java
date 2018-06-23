@@ -22,7 +22,7 @@ import java.io.IOException;
  * @see YamlReader
  * @see YamlWriter
  */
-public class YamlConfiguration {
+public final class YamlConfiguration {
     /**
      * The yaml reader class for this config
      */

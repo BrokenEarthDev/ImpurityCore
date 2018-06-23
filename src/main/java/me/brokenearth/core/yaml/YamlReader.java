@@ -23,7 +23,7 @@ import java.util.Map;
  * @see YamlConfiguration
  * @see YamlWriter
  */
-public class YamlReader {
+public final class YamlReader {
     /**
      * The map that stores key entries
      */
