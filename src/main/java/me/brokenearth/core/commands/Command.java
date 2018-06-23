@@ -1,6 +1,9 @@
 package me.brokenearth.core.commands;
 
+import com.sun.istack.internal.NotNull;
+import me.brokenearth.core.container.Container;
 import me.brokenearth.core.events.CommandEvent;
+import me.brokenearth.core.yaml.YamlConfiguration;
 import net.dv8tion.jda.core.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
 
@@ -23,25 +26,21 @@ import java.util.HashMap;
  * @see CommandExecutor
  */
 public final class Command extends ListenerAdapter {
-
     /**
      * Stores the classes that implement CommandExecutor
      */
     private static HashMap<CommandExecutor, String> map = new HashMap<CommandExecutor, String>();
-
     /**
      * Gets the prefix of the command
      */
     private static String prefix = "";
-
     /**
      * Registers the classes that implement CommandExecutor
      * @param executor the class that implements CommandExecutor
      */
-    public static void register(CommandExecutor executor) {
+    public static void register(@NotNull CommandExecutor executor) {
         map.put(executor, "");
     }
-
     /**
      * Sets the prefix of the command
      * @param prefix the prefix that will be set
@@ -49,7 +48,6 @@ public final class Command extends ListenerAdapter {
     public static void setPrefix(String prefix) {
         Command.prefix = prefix;
     }
-
     /**
      * Triggered when someone sends a message to the bot or in guild
      * @param event the event that occurs when sends a message to the bot or in guild

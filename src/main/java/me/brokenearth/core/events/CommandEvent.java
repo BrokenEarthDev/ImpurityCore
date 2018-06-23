@@ -1,6 +1,9 @@
 package me.brokenearth.core.events;
 
 
+import com.sun.istack.internal.NotNull;
+import me.brokenearth.core.scheduler.Scheduler;
+import me.brokenearth.core.scheduler.Timer;
 import net.dv8tion.jda.core.JDA;
 import net.dv8tion.jda.core.entities.Guild;
 import net.dv8tion.jda.core.entities.Member;
@@ -24,7 +27,6 @@ import net.dv8tion.jda.core.entities.MessageChannel;
  * @see me.brokenearth.core.commands.CommandExecutor
  */
 public final class CommandEvent {
-
     /**
      * The executor of the command
      */
@@ -49,8 +51,7 @@ public final class CommandEvent {
      * The channel in which the command is executed
      */
     private MessageChannel channel;
-
-    public CommandEvent(Member member, Guild guild, String command, String prefix, JDA jda, MessageChannel channel) {
+    public CommandEvent(@NotNull Member member, @NotNull Guild guild, @NotNull String command, @NotNull String prefix, @NotNull JDA jda, @NotNull MessageChannel channel) {
         this.member = member;
         this.guild = guild;
         this.jda = jda;
@@ -58,7 +59,6 @@ public final class CommandEvent {
         this.prefix = prefix;
         this.channel = channel;
     }
-
     /**
      * Gets the executor and
      * @return it
@@ -66,7 +66,6 @@ public final class CommandEvent {
     public Member getMember() {
         return member;
     }
-
     /**
      * Gets the guild in which the executor is in and
      * @return it
@@ -74,7 +73,6 @@ public final class CommandEvent {
     public Guild getGuild() {
         return guild;
     }
-
     /**
      * Gets the jda and
      * @return it
@@ -82,7 +80,6 @@ public final class CommandEvent {
     public JDA getJda() {
         return jda;
     }
-
     /**
      * Gets the command and
      * @return it
@@ -90,7 +87,6 @@ public final class CommandEvent {
     public String getCommand() {
         return command;
     }
-
     /**
      * Gets the prefix and
      * @return it
@@ -105,5 +101,18 @@ public final class CommandEvent {
      */
     public MessageChannel getChannel() {
         return channel;
+    }
+
+    public void run() {
+        int hi = 0;
+        final Timer timer = new Timer() {
+            int time = 0;
+            @Override
+            public void run() {
+                if (time == 9) this.cancel();
+                time++;
+            }
+        };
+        timer.runEvery(9);
     }
 }

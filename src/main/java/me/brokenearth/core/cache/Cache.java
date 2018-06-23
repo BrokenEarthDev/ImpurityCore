@@ -20,12 +20,10 @@ import java.util.Map;
  * @param <V> The value
  */
 public final class Cache<K, V> extends LinkedHashMap<K, V> {
-
     /**
      * The serial version UID
      */
     private final long serialVersionUID = -4794975964067719956L;
-
     /**
      * The size of the cache
      */
@@ -35,7 +33,6 @@ public final class Cache<K, V> extends LinkedHashMap<K, V> {
         super(size, 0.75F, true);
         this.size = size;
     }
-
     /**
      * Gets the size of the cache and
      * @return it
@@ -43,14 +40,12 @@ public final class Cache<K, V> extends LinkedHashMap<K, V> {
     public int getSize() {
         return size;
     }
-
     /**
      * Clears the cache
      */
     public void clear() {
         super.clear();
     }
-
     /**
      * Creates a new cache
      * @param size the size of the cache
@@ -61,7 +56,6 @@ public final class Cache<K, V> extends LinkedHashMap<K, V> {
     public static <K, V> Cache<K, V> createNewCache(int size) {
         return new Cache<K, V>(size);
     }
-
     /**
      * Checks whether it should remove the eldest entry
      * @param entry The map entry

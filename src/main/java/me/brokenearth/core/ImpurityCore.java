@@ -1,13 +1,9 @@
 package me.brokenearth.core;
 
-import me.brokenearth.core.cache.Cache;
+import com.sun.istack.internal.NotNull;
 import me.brokenearth.core.commands.Command;
-import me.brokenearth.core.scheduler.Scheduler;
-import me.brokenearth.core.scheduler.Timer;
 import net.dv8tion.jda.core.JDA;
 import net.dv8tion.jda.core.hooks.ListenerAdapter;
-
-import java.util.TimerTask;
 
 /**
  * Copyright 2018 github.com/BrokenEarthDev
@@ -25,27 +21,23 @@ import java.util.TimerTask;
  * @version 1.0
  */
 public class ImpurityCore extends ListenerAdapter {
-
     /**
      * The jda
      */
     private static JDA jda;
-
     /**
      * Registers the jda
      * @param jda the jda that is going to be registered
      */
-    public static void registerJDA(JDA jda) {
+    public static void registerJDA(@NotNull JDA jda) {
         ImpurityCore.jda = jda;
         jda.addEventListener(new Command());
     }
-
     /**
      * Gets the jda and
      * @return it
      */
     public static JDA getJDA() {
         return jda;
-
     }
 }

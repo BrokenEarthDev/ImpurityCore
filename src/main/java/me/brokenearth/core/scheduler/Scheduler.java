@@ -1,5 +1,7 @@
 package me.brokenearth.core.scheduler;
 
+import com.sun.istack.internal.NotNull;
+
 import java.util.TimerTask;
 
 /**
@@ -18,19 +20,16 @@ import java.util.TimerTask;
  * @see Timer
  */
 public final class Scheduler {
-
     /**
      * Original timer instance
      */
     private java.util.Timer timer1 = new java.util.Timer();
-
-
     /**
      * Schedules the timer and calls when time (in millis) is done
      * @param timer the timer class
      * @param millis time must be in milliseconds
      */
-    public void schedule(final Timer timer, int millis) {
+    public void schedule(@NotNull final Timer timer, int millis) {
         timer1.schedule(new TimerTask() {
             @Override
             public void run() {
@@ -38,14 +37,13 @@ public final class Scheduler {
             }
         }, millis);
     }
-
     /**
      * Schedules the timer until the time (in millis) is over and then calls the run method over
      * and over again
      * @param timer the timer class
      * @param millis time mute be in milliseconds
      */
-    public void runEvery(final Timer timer, final int millis) {
+    public void runEvery(@NotNull final Timer timer, final int millis) {
         timer1.schedule(new TimerTask() {
             @Override
             public void run() {
@@ -54,12 +52,11 @@ public final class Scheduler {
             }
         }, millis);
     }
-
     /**
      * Cancels the timer of the given class
      * @param timer the timer class
      */
-    public void cancel(Timer timer) {
+    public void cancel(@NotNull Timer timer) {
         timer.cancel();
         timer1.cancel();
     }

@@ -18,22 +18,18 @@ import java.util.TimerTask;
  * @see Scheduler
  */
 public abstract class Timer {
-
     /**
      * The method that is called when the timer fulfills
      */
     public abstract void run();
-
     /**
      * Original timer instance
      */
     private java.util.Timer timer = new java.util.Timer();
-
     /**
      * Defines if the timer is cancelled or not
      */
     private boolean isCancelled;
-
     /**
      * Schedules the timer until the time (in millis) is over and then calls the run method
      * @param millis time must be in milliseconds
@@ -48,7 +44,6 @@ public abstract class Timer {
             }
         }, millis);
     }
-
     /**
      * Schedules the timer until the time (in millis) is over and then calls the run method over
      * and over again
@@ -65,7 +60,6 @@ public abstract class Timer {
             }
         }, millis);
     }
-
     /**
      * Cancels the timer
      */
@@ -73,11 +67,11 @@ public abstract class Timer {
         isCancelled = true;
         timer.cancel();
     }
-
     /**
      * @return whether or not the timer is cancelled
      */
     public boolean isCancelled() {
         return isCancelled;
     }
+
 }
