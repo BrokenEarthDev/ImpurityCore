@@ -17,6 +17,7 @@ import java.io.IOException;
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  *
+ * NOTE: BOTH {@link YamlReader} AND {@link YamlWriter} does not support tree-view or lists
  * @author BrokenEarth // BrokenEarthDev
  * @version 1.0
  * @see YamlReader

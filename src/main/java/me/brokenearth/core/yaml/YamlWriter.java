@@ -1,7 +1,6 @@
 package me.brokenearth.core.yaml;
 
 import com.sun.istack.internal.NotNull;
-import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.Yaml;
 
 import java.io.*;
@@ -34,8 +33,8 @@ public final class YamlWriter {
     }
     /**
      * Writes a file and saves it
-     * @param path
-     * @param value
+     * @param path the path that will be written to
+     * @param value the value of the path
      */
     public void write(@NotNull String path, @NotNull Object value) {
         if (String.valueOf(value).contains(":") || String.valueOf(path).contains(":")) {

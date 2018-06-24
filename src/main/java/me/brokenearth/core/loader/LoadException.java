@@ -1,9 +1,6 @@
-package me.brokenearth.core;
+package me.brokenearth.core.loader;
 
 import com.sun.istack.internal.NotNull;
-import me.brokenearth.core.commands.Command;
-import net.dv8tion.jda.core.JDA;
-import net.dv8tion.jda.core.hooks.ListenerAdapter;
 
 /**
  * Copyright 2018 github.com/BrokenEarthDev
@@ -16,28 +13,23 @@ import net.dv8tion.jda.core.hooks.ListenerAdapter;
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  *
- * Please extend your main class with this class
  * @author BrokenEarth // BrokenEarthDev
  * @version 1.0
  */
-public class ImpurityCore extends ListenerAdapter {
-    /**
-     * The jda
-     */
-    private static JDA jda;
-    /**
-     * Registers the jda
-     * @param jda the jda that is going to be registered
-     */
-    protected static void registerJDA(@NotNull JDA jda) {
-        ImpurityCore.jda = jda;
-        jda.addEventListener(new Command());
+public final class LoadException extends Exception {
+    public LoadException() {
+        super();
     }
-    /**
-     * Gets the jda and
-     * @return it
-     */
-    public static JDA getJDA() {
-        return jda;
+
+    public LoadException(@NotNull String message) {
+        super(message);
+    }
+
+    public LoadException(@NotNull String message, @NotNull Throwable cause) {
+        super(message, cause);
+    }
+
+    public LoadException(@NotNull Throwable cause) {
+        super(cause);
     }
 }

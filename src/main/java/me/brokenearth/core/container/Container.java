@@ -1,7 +1,8 @@
 package me.brokenearth.core.container;
 
+import com.sun.istack.internal.NotNull;
+
 import java.io.File;
-import java.io.IOException;
 
 /**
  * Copyright 2018 github.com/BrokenEarthDev
@@ -17,7 +18,7 @@ import java.io.IOException;
  * @author BrokenEarth // BrokenEarthDev
  * @version 1.0
  */
-public class Container {
+public final class Container {
     /**
      * The container file
      */
@@ -30,7 +31,7 @@ public class Container {
      * The container class
      */
     private static Container container = null;
-    public Container(File file) throws NullPointerException, InterruptedException {
+    public Container(@NotNull File file) throws NullPointerException, InterruptedException {
         if (isRegistered) {
             throw new InterruptedException("Container is already registered");
         }
@@ -51,7 +52,6 @@ public class Container {
     public static File getFile() {
         return file;
     }
-
     /**
      * Gets the container class and
      * @return it

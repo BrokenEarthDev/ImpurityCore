@@ -1,10 +1,9 @@
 package me.brokenearth.core.yaml;
 
 import com.sun.istack.internal.NotNull;
+import org.yaml.snakeyaml.Yaml;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.io.*;
 import java.util.Map;
 
 /**
@@ -45,6 +44,11 @@ public final class YamlReader {
         }
         this.map = config.getWriter().map;
         if (!config.getWriter().saved) getContents().clear();
+        try {
+            addContents();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     /**
      * Gets the object from a specified path
@@ -100,5 +104,63 @@ public final class YamlReader {
      */
     public Map<String, Object> getContents() {
         return map;
+    }
+
+    /**
+     * Adds contents that are are not written using {@link YamlReader}
+     * @throws IOException if file not specified correctly
+     */
+    private void addContents() throws IOException{
+        FileReader fileReader = new FileReader(file);
+        BufferedReader reader = new BufferedReader(fileReader);
+        String read = "";
+        while ((read = reader.readLine()) != null) {
+            if (!getContents().containsKey(getPath(read)) || !getContents().containsValue(getValue(read))) {
+                if (!getValue(read).equalsIgnoreCase("") || !getPath(read).equalsIgnoreCase("")) {
+                    getContents().put(getPath(read), getValue(read));
+                }
+            }
+        }
+    }
+    /**
+     * Gets the path from a line
+     * @param line a complete yaml file
+     * @return the path
+     */
+    public String getPath(String line) {
+        char[] chars = line.toCharArray();
+        int breakpoint = 0;
+        String path = "";
+        for (int i = 0; i < chars.length; i++) {
+            if (chars[i] == ':') {
+                breakpoint = i;
+            }
+        }
+        for (int i = 0; i < breakpoint; i++) {
+            path += chars[i];
+        }
+        return path;
+    }
+    /**
+     * Gets the value from a line
+     * @param line a complete yaml line
+     * @return the value
+     */
+    private String getValue(String line) {
+        char[] chars = line.toCharArray();
+        int breakpoint = 0;
+        boolean nospace = false;
+        String value = "";
+        for (int i = 0; i < chars.length; i++) {
+            if (chars[i] == ':') breakpoint = i;
+        }
+        for (int i = breakpoint + 1; i < chars.length; i++) {
+            if (chars[i] != ' ') {
+                nospace = true;
+            }
+            if (!nospace) continue;
+            value+=chars[i];
+        }
+        return value;
     }
 }
